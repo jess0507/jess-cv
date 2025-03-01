@@ -1,0 +1,43 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: flutter-actions/setup-flutter@v4
+        with:
+          channel: stable
+          version: 3.29.0
+
+      - name: Install dependencies
+        run: |
+          cd resume  # 進入到 resume_workspace 目錄
+          flutter pub get  
+
+      - name: Build Flutter Web app
+        run: |
+          cd resume
+          flutter build web  
+
+      - name: Install Firebase CLI
+        run: |
+          curl -sL https://firebase.tools | bash  # Install Firebase CLI
+
+      - name: Set Firebase project
+        run: |
+          firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
+
+      - name: Deploy to Firebase
+        run: |
+          cd resume
+          firebase deploy
