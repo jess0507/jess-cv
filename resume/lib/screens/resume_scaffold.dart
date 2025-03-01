@@ -65,7 +65,6 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar>
     ];
 
     List<Widget> sections = [
-      PortfolioSection(),
       AboutMeSection(),
       CareerSection(),
       EducationSection(),
@@ -76,6 +75,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar>
           ProgramSection(),
         ],
       ),
+      PortfolioSection(),
     ];
 
     return Scaffold(

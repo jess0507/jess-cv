@@ -7,8 +7,43 @@ import 'package:resume/data/model/portfolio.dart';
 import 'package:resume/data/model/program_skill.dart';
 import 'package:resume/widgets/social_button.dart';
 
-const String GOOGLE_DRIVE_URL =
-    'https://drive.usercontent.google.com/download?';
+const String MOOR_MOBILE_GOOGLE_PLAY_URL =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-mobile-google-play.png?alt=media&token=8c14f643-7383-4d3c-ab09-f5ea75295368';
+const String MOOR_TRANSLATION_BEFORE =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-before-translation.png?alt=media&token=2fc07381-92af-4d71-ac2b-82b1542735fc';
+const String MOOR_TRANSLATION_AFTER =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-after-translation.png?alt=media&token=b40ffa52-deb0-49e4-aac2-349c3c01337f';
+const String MOOR_CHAT_ROOM =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-chat-room.png?alt=media&token=85ccd8c0-6382-4567-b155-9577f86b6156';
+const String MOOR_RECORD_VOICE =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-chat-room-record-voice.png?alt=media&token=b953ffa3-5a4f-4763-bc69-c26ba24bc7a1';
+const String MOOR_MULTI_SELECTION =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-multi-selection.png?alt=media&token=bdb8b8c2-f7aa-4af7-8f36-5dfcb286dc32';
+const String MOOR_POST =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-post.png?alt=media&token=c4d7eb15-d647-42b1-946f-3d6ad797529a';
+const String MOOR_POST_SCHEDULE_DATE =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-post-schedule.png?alt=media&token=fedba07e-e569-45c9-806a-afe392e56f34';
+const String MOOR_POST_SCHEDUKE_TIME =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-post-schedule-time.png?alt=media&token=71265ee3-40dc-45e3-97fb-7e4488edfe82';
+const String MOOR_HOME_LIST =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fmoor%2Fmoor-home.png?alt=media&token=e8bd507b-c765-4499-8684-bc1218aa215c';
+
+const String KOITALK_GOOGLE_PLAY_URL =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fkoitalk%2Fkoitalk-google-play.webp?alt=media&token=188e5c27-f047-4924-9833-c75c97b383e0';
+const String KOITALK_STT =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fkoitalk%2Fkoitalk-stt.png?alt=media&token=c9473b49-74d9-4bdb-b380-6711b3466ab0';
+
+const String QMIIX_MOBILE_GOOGLE_PLAY_URL =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fqmiix%2Fqmiix-mobile-google-play.png?alt=media&token=660c2795-89e1-4a8e-9c2d-87f67fd4dee7';
+const String QMIIX_CALENDAR_LINE =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fqmiix%2Fqmiix-calendar-line.jpeg?alt=media&token=d565f65f-3435-408b-ab88-2f51ca4b949c';
+const String QMIIX_LINE_ACTION =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Fqmiix%2Fqmiix-line-action.jpeg?alt=media&token=c266309c-3285-4361-917a-4a25654b8152';
+
+const String LEJOURNEY_MOBILE_GOOGLE_PLAY_URL =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Flejourney%2Flejourney-mobile-google-play.png?alt=media&token=479909ed-2939-4c85-91c7-c9a57c92d68e';
+const String LEJOURNEY_THIRD_PARTY_LOGIN_URL =
+    'https://firebasestorage.googleapis.com/v0/b/kafka-423811.appspot.com/o/cv%2Flejourney%2Flejuorney-third-party-login.png?alt=media&token=9f69d5a9-da6b-4587-89c0-2ca718a146e1';
 
 final List<SocialButtonData> socialData = [
   SocialButtonData(
@@ -262,14 +297,14 @@ final List<Portfolio> portfolioList = [
       Feature(
         title: 'On google play',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1l8bMyYRlXihMYWfkiOan_Q3dJq6txLYr',
+          MOOR_MOBILE_GOOGLE_PLAY_URL,
         ],
       ),
       Feature(
         title: 'Notification translation.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1aYJDW21_07aliwc8G4u7o1bxur1yFfoh',
-          '${GOOGLE_DRIVE_URL}id=10AUrPWgo9C46vuhFcVrv_9ujJJyO4OgX',
+          MOOR_TRANSLATION_BEFORE,
+          MOOR_TRANSLATION_AFTER,
         ],
       ),
       Feature(
@@ -278,24 +313,30 @@ final List<Portfolio> portfolioList = [
       Feature(title: 'New process for uploading assets.'),
       Feature(title: 'Show APNG gift animation.'),
       Feature(
-        title: 'Media file selections in chatroom.',
+        title: 'The notificaion from pusher web socket for the chat room.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1CqxNhSLBshbpBV_DvkY9wJoB4rpjSsko',
-          '${GOOGLE_DRIVE_URL}id=1aYJDW21_07aliwc8G4u7o1bxur1yFfoh',
+          MOOR_CHAT_ROOM,
+        ],
+      ),
+      Feature(
+        title: 'Media messages in chatroom.',
+        urls: [
+          MOOR_RECORD_VOICE,
+          MOOR_MULTI_SELECTION,
         ],
       ),
       Feature(
         title: 'Schedule posts, and edit posts.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1EpAJPozIcKJPA4N4c3cYaXuIjXejZMuS',
-          '${GOOGLE_DRIVE_URL}id=1RCd8q8JvuHB3iM8ShAHHTdUY_fC-LZ1U',
+          MOOR_POST,
+          MOOR_POST_SCHEDULE_DATE,
+          MOOR_POST_SCHEDUKE_TIME,
         ],
       ),
       Feature(
         title: 'Show home page list.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1dMi2o4quv0NxpEKQQJ6jrbch0EqB6XFj',
-          '${GOOGLE_DRIVE_URL}id=1J0OMOnuuT3wxwgD4wZYd47ou1Jnn6TRC',
+          MOOR_HOME_LIST,
         ],
       ),
       Feature(title: 'Story List view.'),
@@ -319,13 +360,15 @@ final List<Portfolio> portfolioList = [
       Feature(
         title: 'On google play',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=18Uin7f7RDIcmNpKHE2ZnYXT5uS5sFSyj',
+          KOITALK_GOOGLE_PLAY_URL,
         ],
       ),
       Feature(
         title:
             'Make STT(Speech to Text) and translation features on a video phone call.',
-        urls: [],
+        urls: [
+          KOITALK_STT,
+        ],
       ),
       Feature(
         title: 'Social Login, ex. Apple ID, Google, Facebook, etc.',
@@ -342,14 +385,14 @@ final List<Portfolio> portfolioList = [
       Feature(
         title: 'On google play',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1hOZgXuuNpik6lX3YDQFaWR6mS-jQSqaK',
+          QMIIX_MOBILE_GOOGLE_PLAY_URL,
         ],
       ),
       Feature(
         title: 'Combine Google calendar and Line.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1tVwVt05s4-_P4N39iU0nD4Omfykr8QNg',
-          '${GOOGLE_DRIVE_URL}id=1L1jt8T_wKq9t23-KSnk-wAuZLtCtXNWb',
+          QMIIX_CALENDAR_LINE,
+          QMIIX_LINE_ACTION,
         ],
       ),
       Feature(title: 'Using Coroutine to uploads images to NAS.'),
@@ -363,13 +406,13 @@ final List<Portfolio> portfolioList = [
       Feature(
         title: 'On google play',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1WmY4huBDNZ9WSTOPFsWXHOabkL-PZYUz',
+          LEJOURNEY_MOBILE_GOOGLE_PLAY_URL,
         ],
       ),
       Feature(
         title: 'Social Login, ex. Apple ID, Google, Facebook, etc.',
         urls: [
-          '${GOOGLE_DRIVE_URL}id=1JdN88qr8c8MbspzJR-iLM6vC91xSVqc-',
+          LEJOURNEY_THIRD_PARTY_LOGIN_URL,
         ],
       ),
       Feature(title: 'Feature: Register on first purchase.'),
