@@ -33,6 +33,11 @@ jobs:
         run: |
           curl -sL https://firebase.tools | bash  # Install Firebase CLI
 
+      - name: Authenticate Firebase CLI
+        run: |
+          echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > "$HOME/firebase-key.json"
+          firebase auth:login --ci --token "$(firebase login:ci --json < $HOME/firebase-key.json | jq -r '.refresh_token')"
+
       - name: Set Firebase project
         run: |
           firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
