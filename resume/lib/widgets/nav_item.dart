@@ -19,7 +19,8 @@ class NavItemData {
 }
 
 class NavItem extends StatefulWidget {
-  NavItem({
+  const NavItem({
+    super.key,
     required this.title,
     this.titleColor = AppColors.black,
     this.isSelected = false,
@@ -70,7 +71,7 @@ class _NavItemState extends State<NavItem> with SingleTickerProviderStateMixin {
                     ),
             Text(
               widget.title,
-              style: textTheme.titleMedium,
+              style: widget.titleStyle ?? textTheme.titleMedium,
             ),
           ],
         ),

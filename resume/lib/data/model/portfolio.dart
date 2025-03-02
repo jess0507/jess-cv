@@ -15,9 +15,11 @@ class Portfolio {
 class Feature {
   final String title;
   final List<String> urls;
+  final double aspectRatio;
 
   Feature({
     required this.title,
     this.urls = const [],
+    this.aspectRatio = 9 / 16,
   });
 }

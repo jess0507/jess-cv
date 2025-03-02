@@ -362,6 +362,7 @@ final List<Portfolio> portfolioList = [
         urls: [
           KOITALK_GOOGLE_PLAY_URL,
         ],
+        aspectRatio: 4 / 3,
       ),
       Feature(
         title:
@@ -369,6 +370,7 @@ final List<Portfolio> portfolioList = [
         urls: [
           KOITALK_STT,
         ],
+        aspectRatio: 4 / 3,
       ),
       Feature(
         title: 'Social Login, ex. Apple ID, Google, Facebook, etc.',
@@ -414,6 +416,7 @@ final List<Portfolio> portfolioList = [
         urls: [
           LEJOURNEY_THIRD_PARTY_LOGIN_URL,
         ],
+        aspectRatio: 4 / 3,
       ),
       Feature(title: 'Feature: Register on first purchase.'),
       Feature(title: 'Publish the app on Google Play.'),

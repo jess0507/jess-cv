@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/screens/about_me_section.dart';
 import 'package:resume/screens/career_section.dart';
 import 'package:resume/screens/education_section.dart';
-import 'package:resume/screens/nav_section_web.dart';
+import 'package:resume/widgets/app_drawer.dart';
+import 'package:resume/widgets/nav_section_mobile.dart';
+import 'package:resume/widgets/nav_section_web.dart';
 import 'package:resume/screens/portfolio_section.dart';
 import 'package:resume/screens/program_section.dart';
 import 'package:resume/screens/skills_section.dart';
@@ -10,6 +13,7 @@ import 'package:resume/utils/adaptive.dart';
 import 'package:resume/values/values.dart';
 import 'package:resume/widgets/nav_item.dart';
 import 'package:resume/widgets/spaces.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class ExampleDestination {
   const ExampleDestination(this.label, this.icon, this.path,
@@ -45,6 +49,7 @@ class ScaffoldWithNavBar extends StatefulWidget {
 
 class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar>
     with SingleTickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 300),
     vsync: this,
@@ -68,44 +73,91 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar>
       AboutMeSection(),
       CareerSection(),
       EducationSection(),
-      Column(
-        children: [
-          SkillsSection(),
-          SpaceH40(),
-          ProgramSection(),
-        ],
-      ),
+      SkillsSection(),
       PortfolioSection(),
     ];
 
     return Scaffold(
-      body: Column(
+      drawer: ResponsiveBuilder(
+        refinedBreakpoints: RefinedBreakpoints(),
+        builder: (context, sizingInformation) {
+          double screenWidth = sizingInformation.screenSize.width;
+          if (screenWidth < RefinedBreakpoints().desktopSmall) {
+            return AppDrawer(
+              menuList: navItems,
+            );
+          } else {
+            return Container();
+          }
+        },
+      ),
+      body: Stack(
         children: [
-          NavSectionWeb(
-            navItems: navItems,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  ...sections.map(
-                    (section) {
-                      final index = sections.indexOf(section);
-                      return Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: assignWidth(context, 0.1),
-                          vertical: spacerHeight,
-                        ),
-                        key: navItems[index].key,
-                        // color: colors[index],
-                        child: section,
-                      );
-                    },
-                  ),
-                ],
+          Column(
+            children: [
+              ResponsiveBuilder(
+                refinedBreakpoints: RefinedBreakpoints(),
+                builder: (context, sizingInformation) {
+                  double screenWidth = sizingInformation.screenSize.width;
+                  if (screenWidth < RefinedBreakpoints().desktopSmall) {
+                    return SizedBox.shrink();
+                  } else {
+                    return NavSectionWeb(
+                      navItems: navItems,
+                    );
+                  }
+                },
               ),
-            ),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ...sections.map(
+                        (section) {
+                          final index = sections.indexOf(section);
+
+                          return VisibilityDetector(
+                            key: navItems[index].key,
+                            onVisibilityChanged: (info) {
+                              // Todo: 比較section的info.fraction
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: assignWidth(context, 0.1),
+                                vertical: spacerHeight,
+                              ),
+                              // color: colors[index], // For debugging
+                              child: section,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          ResponsiveBuilder(
+            refinedBreakpoints: RefinedBreakpoints(),
+            builder: (context, sizingInformation) {
+              double screenWidth = sizingInformation.screenSize.width;
+              if (screenWidth < RefinedBreakpoints().desktopSmall) {
+                return NavSectionMobile(
+                  isDrawerOpen: Scaffold.of(context).isDrawerOpen,
+                  openDrawer: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  openEndDrawer: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                );
+              } else {
+                return SizedBox.shrink();
+              }
+            },
           ),
         ],
       ),
