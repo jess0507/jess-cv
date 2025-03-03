@@ -11,6 +11,10 @@
             "type": "dart",
             "flutterMode": "debug",
             "program": "../resume/lib/main.dart",
+            "toolArgs": [
+                "--web-browser-flag=--disable-web-security",
+                "--web-browser-flag=--user-data-dir=/tmp/chrome_dev"
+            ]
         },
     ]
 }
