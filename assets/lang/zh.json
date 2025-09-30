@@ -12,5 +12,13 @@
     "madeIn": "製造於",
     "with": "和",
     "emailLabel:": "Email:",
-    "email": "merukoo0507@gmail.com"
+    "email": "merukoo0507@gmail.com",
+    "projects": "專案",
+    "skills": "技術",
+    "myWorks": "作品集",
+    "meetMyProjects": "開發過的專案",
+    "projectsSubtitle": "這些專案為我過去承接或參與開發專案或應用程式",
+    "mySkills": "技能樹",
+    "whatMyDesignSkillsInclude": "軟體程式技術",
+    "skillsSubtitle": "在開發軟體或應用程式時，經常用到的程式語言或工具。"
 }

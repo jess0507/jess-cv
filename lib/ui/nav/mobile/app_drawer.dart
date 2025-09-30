@@ -8,13 +8,13 @@ import 'package:resume/core/widgets/spaces.dart';
 import '../../../core/utils/functions.dart';
 import '../../../core/widgets/social_button.dart';
 import '../../../data/constants.dart';
-import '../../../domain/nav_item.dart';
+import '../../../domain/nav_data.dart';
 import '../web/nav_item.dart';
 
 class AppDrawer extends StatefulWidget {
   final Color color;
   final double? width;
-  final List<NavItemData> navItems;
+  final List<NavData> navItems;
   final GestureTapCallback? onClose;
   final OnTapNavItem onTapNavItem;
 
@@ -82,7 +82,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   List<Widget> _buildMenuList({
     required TextTheme textTheme,
-    required List<NavItemData> menuList,
+    required List<NavData> menuList,
   }) {
     List<Widget> menuItems = [];
     for (var i = 0; i < menuList.length; i++) {

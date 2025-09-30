@@ -2,30 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/ui/home/home_page.dart';
-import 'package:resume/ui/portfolio/portfolio_page.dart';
+import 'package:resume/ui/home/skill_section.dart';
+import 'package:resume/ui/project/project_page.dart';
 import 'package:resume/ui/nav/mobile/app_drawer.dart';
 import 'package:resume/ui/nav/mobile/mobile_navigation_button.dart';
 import 'package:resume/ui/nav/web/web_navigation_bar.dart';
 
-import '../domain/nav_item.dart';
+import '../domain/nav_data.dart';
 
-const webWidthAspectRatio = 0.7;
-
-typedef OnTapNavItem = void Function(NavItemData);
+typedef OnTapNavItem = void Function(NavData);
 
 class ScaffoldWithNav extends StatefulWidget {
-  final Widget child;
   final bool isMobile;
-  final List<NavItemData> navItems;
 
-  ScaffoldWithNav({
-    required this.child,
+  const ScaffoldWithNav({
     this.isMobile = true,
     super.key,
-  }) : navItems = [
-          NavItemData(key: 'home', isSelected: true, path: HomePage.path),
-          NavItemData(key: 'portfolio', path: PortfolioPage.path),
-        ];
+  });
 
   @override
   State<ScaffoldWithNav> createState() => _ScaffoldWithNavState();
@@ -33,13 +26,26 @@ class ScaffoldWithNav extends StatefulWidget {
 
 class _ScaffoldWithNavState extends State<ScaffoldWithNav>
     with SingleTickerProviderStateMixin {
-  List<NavItemData> navItems = [];
-
-  @override
-  void initState() {
-    navItems = widget.navItems;
-    super.initState();
-  }
+  String selectedKey = 'home';
+  List<NavData> navItems = [
+    NavData(
+      key: 'home',
+      isSelected: true,
+      path: HomePage.path,
+      globalKey: GlobalKey(),
+    ),
+    NavData(
+      key: 'projects',
+      path: ProjectPage.path,
+      globalKey: GlobalKey(),
+    ),
+    NavData(
+      key: 'skills',
+      path: SkillSection.path,
+      globalKey: GlobalKey(),
+    ),
+  ];
+  final scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +69,6 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
           builder: (context, sizingInformation) {
             double screenWidth = sizingInformation.screenSize.width;
             final isMobile = screenWidth < RefinedBreakpoints().tabletSmall;
-            final containerWidth =
-                isMobile ? screenWidth : screenWidth * webWidthAspectRatio;
 
             return Stack(
               children: [
@@ -88,9 +92,9 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
                         onTapNavItem: onTapNavItem,
                       ),
                     Expanded(
-                      child: SizedBox(
-                        width: containerWidth,
-                        child: widget.child,
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        child: HomePage(navItems: navItems),
                       ),
                     )
                   ],
@@ -101,13 +105,19 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
     );
   }
 
-  void onTapNavItem(NavItemData navItem) {
-    final newItems = widget.navItems
-        .map((NavItemData e) => e.copy(isSelected: e.key == navItem.key))
+  void onTapNavItem(NavData navItem) {
+    final newItems = navItems
+        .map((NavData e) => e.copy(isSelected: e.key == navItem.key))
         .toList();
     setState(() {
       navItems = newItems;
+      selectedKey = navItem.key;
     });
-    context.go(navItem.path);
+
+    Scrollable.ensureVisible(
+      navItem.globalKey.currentContext!,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 }

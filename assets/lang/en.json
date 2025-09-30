@@ -12,5 +12,13 @@
     "madeIn": "Made in",
     "with": "with",
     "emailLabel:": "Email:",
-    "email": "merukoo0507@gmail.com"
+    "email": "merukoo0507@gmail.com",
+    "projects": "Projects",
+    "skills": "Skills",
+    "myWorks": "my works",
+    "meetMyProjects": "Meet My Projects",
+    "projectsSubtitle": "These are projects and applications that I have contributed to or developed.",
+    "mySkills": "my skills",
+    "whatMyDesignSkillsInclude": "What My Design Skills Include",
+    "skillsSubtitle": "These are the skills and tools I frequently use in development."
 }

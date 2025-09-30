@@ -1,8 +1,8 @@
-class ProgramSkill {
+class SkillData {
   final String category;
   final List<String> list;
 
-  ProgramSkill({
+  SkillData({
     required this.category,
     required this.list,
   });

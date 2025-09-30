@@ -1,33 +1,22 @@
 {
-    "hosting": {
-        "public": "public",
-        "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-        ],
-        "headers": [
-            {
-                "source": "/lang/**",
-                "headers": [
-                    {
-                        "key": "Access-Control-Allow-Origin",
-                        "value": "*"
-                    }
-                ]
-            }
-        ]
-    },
-    "flutter": {
-        "platforms": {
-            "dart": {
-                "lib/firebase_options.dart": {
-                    "projectId": "jess-yen",
-                    "configurations": {
-                        "web": "1:148247231661:web:5e6a849a6c74db346d9a24"
-                    }
-                }
-            }
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "jess-yen",
+          "configurations": {
+            "web": "1:148247231661:web:5e6a849a6c74db346d9a24"
+          }
         }
+      }
     }
+  }
 }

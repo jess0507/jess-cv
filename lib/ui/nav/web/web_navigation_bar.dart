@@ -8,11 +8,11 @@ import 'package:resume/core/widgets/social_button.dart';
 import 'package:resume/core/widgets/spaces.dart';
 
 import '../../../data/locale_service.dart';
-import '../../../domain/nav_item.dart';
+import '../../../domain/nav_data.dart';
 import '../../scaffold_with_nav.dart';
 
 class WebNavigationBar extends StatefulWidget {
-  final List<NavItemData> navItems;
+  final List<NavData> navItems;
   final OnTapNavItem onTapNavItem;
 
   const WebNavigationBar(
@@ -42,7 +42,7 @@ class _WebNavigationBarState extends State<WebNavigationBar> {
       return items;
     }
 
-    List<Widget> buildNavItems(List<NavItemData> navItems) {
+    List<Widget> buildNavItems(List<NavData> navItems) {
       List<Widget> items = [];
       for (int index = 0; index < navItems.length; index++) {
         items.add(

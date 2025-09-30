@@ -13,6 +13,32 @@
   flutter upgrade
 - flutter pub get
 
+## CORS
+- for images
+- install gsutil
+  ```
+    curl https://sdk.cloud.google.com | bash
+    exec -l $SHELL
+    gcloud init
+  ```
+- verify
+  `gsutil --version`
+- config 
+  ```
+    gcloud auth login
+    gcloud config set project jess-yen
+    gsutil ls      
+  ```
+- gsutil cors set cors.json gs://your-project-id.appspot.com
+
+## Firebase Hosting
+- brew install npm
+- npm install -g firebase-tools
+
+## Deploy
+- flutter build web
+- firebase deploy --only hosting
+
 ## Reference
 - [radyhaggag](https://github.com/radyhaggag/web_portfolio_with_flutter?ref=flutterawesome.com)
 - [nimbus](https://github.com/david-legend/nimbus)
