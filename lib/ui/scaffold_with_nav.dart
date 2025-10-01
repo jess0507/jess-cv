@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/ui/home/home_page.dart';
 import 'package:resume/ui/home/skill_section.dart';
