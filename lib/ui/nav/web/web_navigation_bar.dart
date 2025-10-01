@@ -15,8 +15,11 @@ class WebNavigationBar extends StatefulWidget {
   final List<NavData> navItems;
   final OnTapNavItem onTapNavItem;
 
-  const WebNavigationBar(
-      {super.key, required this.navItems, required this.onTapNavItem});
+  const WebNavigationBar({
+    super.key,
+    required this.navItems,
+    required this.onTapNavItem,
+  });
 
   @override
   State<WebNavigationBar> createState() => _WebNavigationBarState();

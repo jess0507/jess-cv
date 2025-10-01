@@ -161,7 +161,7 @@ class _ProjectItemState extends State<ProjectItem>
 
 class ProjectCover extends StatelessWidget {
   const ProjectCover({
-    Key? key,
+    super.key,
     required this.width,
     required this.height,
     required this.title,
@@ -172,7 +172,7 @@ class ProjectCover extends StatelessWidget {
     this.subtitleStyle,
     this.titleStyle,
     this.isHover = false,
-  }) : super(key: key);
+  });
 
   final String title;
   final String subtitle;

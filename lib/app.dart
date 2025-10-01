@@ -11,7 +11,6 @@ class ResumeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Jess Web',
       onGenerateTitle: (context) => LocaleService().getText('appTitle'),
       theme: AppTheme.lightThemeData,
       routerConfig: goRouter,

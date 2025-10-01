@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../core/widgets/spaces.dart';
 import '../../data/constants.dart';

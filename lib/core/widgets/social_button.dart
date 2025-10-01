@@ -19,6 +19,7 @@ class SocialButtonData {
 
 class SocialButton extends StatelessWidget {
   const SocialButton({
+    super.key,
     required this.tag,
     required this.iconData,
     this.onPressed,

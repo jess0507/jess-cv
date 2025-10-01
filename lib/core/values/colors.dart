@@ -1,4 +1,4 @@
-part of values;
+part of 'values.dart';
 
 class AppColors {
   static const Color primaryColor = Color(0xFFF6C350);

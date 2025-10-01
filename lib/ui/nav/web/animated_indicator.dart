@@ -33,6 +33,7 @@ class AnimatedHoverIndicator extends StatelessWidget {
 
 class AnimatedHoverIndicator2 extends StatelessWidget {
   const AnimatedHoverIndicator2({
+    super.key,
     // required this.width,
     required this.animation,
     this.indicatorColor = AppColors.white,

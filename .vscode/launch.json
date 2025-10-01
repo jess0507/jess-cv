@@ -5,9 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "resume",
+            "name": "Flutter Web (Chrome, port 5000)",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/main.dart",
+            "toolArgs": [
+                "-d",
+                "chrome",
+                "--web-port",
+                "5000",
+                "--web-hostname",
+                "0.0.0.0"
+            ]
         },
         {
             "name": "resume (profile mode)",

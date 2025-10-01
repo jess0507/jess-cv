@@ -9,6 +9,7 @@ import 'package:resume/ui/home/skill_section.dart';
 import 'package:resume/ui/project/project_page.dart';
 
 const webScreenRatioForPadding = 0.15;
+const mobileScreenRatioForPadding = 0.1;
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -25,11 +26,11 @@ class HomePage extends StatelessWidget {
       child: ResponsiveBuilder(
         refinedBreakpoints: RefinedBreakpoints(),
         builder: (context, sizingInformation) {
-          double screenWidth = sizingInformation.screenSize.width *
-              (1 - webScreenRatioForPadding * 2);
+          double screenWidth = sizingInformation.screenSize.width;
           final isMobile = screenWidth < RefinedBreakpoints().tabletSmall;
-          final padding = screenWidth * webScreenRatioForPadding;
-          final infoPadding = isMobile ? padding : padding * 2;
+          final padding = isMobile
+              ? screenWidth * mobileScreenRatioForPadding
+              : screenWidth * webScreenRatioForPadding;
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
             children: [
               Padding(
                 key: navItems.where((e) => e.key == 'home').first.globalKey,
-                padding: EdgeInsetsGeometry.symmetric(horizontal: infoPadding),
+                padding: EdgeInsets.symmetric(horizontal: padding),
                 child: InfoSection(),
               ),
               SpaceH110(),
@@ -52,14 +53,14 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40),
-              Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 50),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: isMobile ? 20 : 50),
                 child: ProjectPage(),
               ),
               SpaceH110(),
               Padding(
                 key: navItems.where((e) => e.key == 'skills').first.globalKey,
-                padding: EdgeInsets.only(left: padding, top: 16),
+                padding: EdgeInsets.only(left: padding),
                 child: NimbusInfoSection(
                   sectionTitle: LocaleService().getText("mySkills"),
                   title1: LocaleService().getText("whatMyDesignSkillsInclude"),
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Padding(
-                padding: EdgeInsetsGeometry.only(left: padding, top: 16),
+                padding: EdgeInsets.symmetric(horizontal: padding),
                 child: SkillSection(),
               ),
               SpaceH110(),
