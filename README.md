@@ -54,6 +54,13 @@
 - Run a server for mobiile or other web to link
   `fvm flutter run -d web-server --web-port 5000 --web-hostname 0.0.0.0`
 
+- run in build/web
+  ```
+    fvm flutter build web 
+    cd build/web
+    python3 -m http.server 5000  
+  ```
+
 ## Reference
 - [radyhaggag](https://github.com/radyhaggag/web_portfolio_with_flutter?ref=flutterawesome.com)
 - [nimbus](https://github.com/david-legend/nimbus)
