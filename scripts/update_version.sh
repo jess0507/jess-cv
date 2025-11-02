@@ -15,20 +15,20 @@ fi
 # 移除開頭的 'v' (如果有)
 VERSION=${GIT_TAG#v}
 
-# 取得 commit 次數作為 build number
-BUILD_NUMBER=$(git rev-list --count HEAD)
+# 取得 commit 次數作為 commit number
+COMMIT_NUMBER=$(git rev-list --count HEAD)
 
 echo "📦 Git Tag: $GIT_TAG"
 echo "🔢 Version: $VERSION"
-echo "🔨 Build Number: $BUILD_NUMBER"
+echo "🔨 Commit Number: $COMMIT_NUMBER"
 
 # 更新 pubspec.yaml
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
-    sed -i '' "s/^version: .*/version: $VERSION+$BUILD_NUMBER/" pubspec.yaml
+    sed -i '' "s/^version: .*/version: $VERSION/" pubspec.yaml
 else
     # Linux
-    sed -i "s/^version: .*/version: $VERSION+$BUILD_NUMBER/" pubspec.yaml
+    sed -i "s/^version: .*/version: $VERSION/" pubspec.yaml
 fi
 
-echo "✅ 已更新 pubspec.yaml 的版本號為: $VERSION+$BUILD_NUMBER"
+echo "✅ 已更新 pubspec.yaml 的版本號為: $VERSION"
