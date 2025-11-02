@@ -94,6 +94,15 @@ final programSkillList = [
 final List<Project> projects = [
   Project(
     id: 1,
+    title: 'W. 采宸美學',
+    subtitle: 'Web',
+    imageUrl:
+    'https://firebasestorage.googleapis.com/v0/b/jess-yen.firebasestorage.app/o/wcaichen-demo.png?alt=media&token=e9dc529d-93de-4989-b11e-f3871ddd92f3',
+    link:
+    'https://docs.google.com/document/d/19IprPTxV_yZEW55SL0ugd0Nfm92q6GU0v1AkIcviebg/edit?tab=t.0#heading=h.bugpew3pjlpv',
+  ),
+  Project(
+    id: 1,
     title: 'IDEKU KIOSK',
     subtitle: 'Android App',
     imageUrl:
@@ -109,14 +118,5 @@ final List<Project> projects = [
         'https://firebasestorage.googleapis.com/v0/b/jess-yen.firebasestorage.app/o/moor-google-play.png?alt=media&token=56a69eb3-00b8-4686-b21c-8491b92c55ef',
     link:
         'https://docs.google.com/document/d/19IprPTxV_yZEW55SL0ugd0Nfm92q6GU0v1AkIcviebg/edit?tab=t.0#heading=h.chou3n21et7h',
-  ),
-  Project(
-    id: 1,
-    title: 'WCAICHEN',
-    subtitle: 'Web',
-    imageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/jess-yen.firebasestorage.app/o/wcaichen-demo.png?alt=media&token=e9dc529d-93de-4989-b11e-f3871ddd92f3',
-    link:
-        'https://docs.google.com/document/d/19IprPTxV_yZEW55SL0ugd0Nfm92q6GU0v1AkIcviebg/edit?tab=t.0#heading=h.bugpew3pjlpv',
   ),
 ];

@@ -45,7 +45,7 @@
 - npm install -g firebase-tools
 
 ## Deploy
-- fvm flutter build web --release
+- fvm flutter build web --release --web-renderer html
 - firebase deploy --only hosting
 
 ## Local Run

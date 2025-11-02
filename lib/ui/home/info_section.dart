@@ -2,12 +2,13 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/core/widgets/spaces.dart';
+import 'package:resume/data/constants.dart';
 import 'package:resume/data/locale_service.dart';
+import 'package:resume/data/analytics_service.dart';
 
 import '../../core/utils/functions.dart';
 import '../../core/values/values.dart';
 import '../../core/widgets/social_button.dart';
-import '../../data/constants.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({super.key});
@@ -53,6 +54,13 @@ class InfoSection extends StatelessWidget {
                   minWidth: 80,
                   height: 48,
                   onPressed: () async {
+                    AnalyticsService().logEvent(
+                      name: 'button_clicked',
+                      parameters: {
+                        'button_name': 'resume',
+                        'link': resumeGoogleGocsLink,
+                      },
+                    );
                     await openUrlLink(resumeGoogleGocsLink);
                   },
                   shape: const RoundedRectangleBorder(
@@ -71,6 +79,13 @@ class InfoSection extends StatelessWidget {
                   minWidth: 80,
                   height: 48,
                   onPressed: () async {
+                    AnalyticsService().logEvent(
+                      name: 'button_clicked',
+                      parameters: {
+                        'button_name': 'portfolio',
+                        'link': portfolioGoogleGocsLink,
+                      },
+                    );
                     await openUrlLink(portfolioGoogleGocsLink);
                   },
                   shape: const RoundedRectangleBorder(
@@ -106,7 +121,17 @@ class InfoSection extends StatelessWidget {
           iconSize: 18.0,
           tag: socialItems[index].tag,
           iconData: socialItems[index].iconData,
-          onPressed: () => openUrlLink(socialItems[index].url),
+          onPressed: () {
+            AnalyticsService().logEvent(
+              name: 'social_link_click',
+              parameters: {
+                'social_type': socialItems[index].tag,
+                'url': socialItems[index].url,
+                'source': 'info_section',
+              },
+            );
+            openUrlLink(socialItems[index].url);
+          },
         ),
       );
       items.add(SpaceW16());

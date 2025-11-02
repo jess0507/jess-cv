@@ -5,8 +5,8 @@ import 'package:resume/core/widgets/spaces.dart';
 import 'package:resume/data/locale_service.dart';
 import 'package:resume/domain/nav_data.dart';
 import 'package:resume/ui/home/info_section.dart';
+import 'package:resume/ui/home/project/project_page.dart';
 import 'package:resume/ui/home/skill_section.dart';
-import 'package:resume/ui/project/project_page.dart';
 
 const webScreenRatioForPadding = 0.15;
 const mobileScreenRatioForPadding = 0.1;

@@ -49,13 +49,13 @@ class SkillSection extends StatelessWidget {
 
     return Wrap(
       spacing: 8.0,
-      runSpacing: 4.0,
+      runSpacing: 5.0,
       alignment: WrapAlignment.start,
       children: <Widget>[
         ...buildSkillSection().map(
           (e) => Container(
             padding: EdgeInsets.only(bottom: 20),
-            width: 250,
+            width: 200,
             child: e,
           ),
         ),

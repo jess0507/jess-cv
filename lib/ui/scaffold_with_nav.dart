@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/ui/home/home_page.dart';
 import 'package:resume/ui/home/skill_section.dart';
-import 'package:resume/ui/project/project_page.dart';
-import 'package:resume/ui/nav/mobile/app_drawer.dart';
-import 'package:resume/ui/nav/mobile/mobile_navigation_button.dart';
-import 'package:resume/ui/nav/web/web_navigation_bar.dart';
+import 'package:resume/ui/components/navigation/mobile/app_drawer.dart';
+import 'package:resume/ui/components/navigation/mobile/mobile_navigation_button.dart';
+import 'package:resume/ui/components/navigation/web/web_navigation_bar.dart';
+import 'package:resume/data/version_service.dart';
+import 'package:resume/data/analytics_service.dart';
 
 import '../domain/nav_data.dart';
+import 'home/project/project_page.dart';
 
 typedef OnTapNavItem = void Function(NavData);
 
-class ScaffoldWithNav extends StatefulWidget {
+class ScaffoldWithNav extends HookConsumerWidget {
   final bool isMobile;
 
   const ScaffoldWithNav({
@@ -20,34 +24,53 @@ class ScaffoldWithNav extends StatefulWidget {
   });
 
   @override
-  State<ScaffoldWithNav> createState() => _ScaffoldWithNavState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final navItems = useState<List<NavData>>([
+      NavData(
+        key: 'home',
+        isSelected: true,
+        path: HomePage.path,
+        globalKey: GlobalKey(),
+      ),
+      NavData(
+        key: 'projects',
+        path: ProjectPage.path,
+        globalKey: GlobalKey(),
+      ),
+      NavData(
+        key: 'skills',
+        path: SkillSection.path,
+        globalKey: GlobalKey(),
+      ),
+    ]);
+    final scrollController = useScrollController();
+    final versionSnapshot = useFuture(
+      useMemoized(() => VersionService().getDisplayVersion()),
+    );
 
-class _ScaffoldWithNavState extends State<ScaffoldWithNav>
-    with SingleTickerProviderStateMixin {
-  String selectedKey = 'home';
-  List<NavData> navItems = [
-    NavData(
-      key: 'home',
-      isSelected: true,
-      path: HomePage.path,
-      globalKey: GlobalKey(),
-    ),
-    NavData(
-      key: 'projects',
-      path: ProjectPage.path,
-      globalKey: GlobalKey(),
-    ),
-    NavData(
-      key: 'skills',
-      path: SkillSection.path,
-      globalKey: GlobalKey(),
-    ),
-  ];
-  final scrollController = ScrollController();
+    void onTapNavItem(NavData navItem) {
+      AnalyticsService().logEvent(
+        name: 'navigation_clicked',
+        parameters: {
+          'nav_item': navItem.key,
+          'nav_path': navItem.path,
+        },
+      );
 
-  @override
-  Widget build(BuildContext context) {
+      final newItems = navItems.value
+          .map((NavData e) => e.copy(isSelected: e.key == navItem.key))
+          .toList();
+      navItems.value = newItems;
+
+      Scrollable.ensureVisible(
+        navItem.globalKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+
+    final version = versionSnapshot.hasData ? versionSnapshot.data! : '';
+
     return Scaffold(
       endDrawer: ResponsiveBuilder(
         refinedBreakpoints: RefinedBreakpoints(),
@@ -55,7 +78,7 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
           double screenWidth = sizingInformation.screenSize.width;
           if (screenWidth < RefinedBreakpoints().desktopSmall) {
             return AppDrawer(
-              navItems: navItems,
+              navItems: navItems.value,
               onTapNavItem: onTapNavItem,
             );
           } else {
@@ -67,7 +90,7 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
           refinedBreakpoints: RefinedBreakpoints(),
           builder: (context, sizingInformation) {
             double screenWidth = sizingInformation.screenSize.width;
-            final isMobile = screenWidth < RefinedBreakpoints().tabletSmall;
+            final isMobile = screenWidth < RefinedBreakpoints().desktopSmall;
 
             return Stack(
               children: [
@@ -87,36 +110,39 @@ class _ScaffoldWithNavState extends State<ScaffoldWithNav>
                       )
                     else
                       WebNavigationBar(
-                        navItems: navItems,
+                        navItems: navItems.value,
                         onTapNavItem: onTapNavItem,
                       ),
                     Expanded(
                       child: SingleChildScrollView(
                         controller: scrollController,
-                        child: HomePage(navItems: navItems),
+                        child: HomePage(navItems: navItems.value),
                       ),
                     )
                   ],
                 ),
+                if (version.isNotEmpty)
+                  Positioned(
+                    right: 16,
+                    bottom: 16,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      child: Text(
+                        version,
+                        style: const TextStyle(
+                          color: Colors.black87,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             );
           }),
-    );
-  }
-
-  void onTapNavItem(NavData navItem) {
-    final newItems = navItems
-        .map((NavData e) => e.copy(isSelected: e.key == navItem.key))
-        .toList();
-    setState(() {
-      navItems = newItems;
-      selectedKey = navItem.key;
-    });
-
-    Scrollable.ensureVisible(
-      navItem.globalKey.currentContext!,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
     );
   }
 }
