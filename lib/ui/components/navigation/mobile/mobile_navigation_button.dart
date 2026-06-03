@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/core/values/values.dart';
 import 'package:resume/core/widgets/spaces.dart';
-import 'package:resume/data/locale_service.dart';
 
 class MobileNavigationbutton extends StatelessWidget {
   final Function() onTapDrawer;
@@ -14,6 +14,7 @@ class MobileNavigationbutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final tr = trWithContext(context);
 
     return SizedBox(
       height: 60,
@@ -23,7 +24,7 @@ class MobileNavigationbutton extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Text(
-              LocaleService().getText("logo"),
+              tr.logo,
               style: textTheme.headlineMedium,
             ),
           ),

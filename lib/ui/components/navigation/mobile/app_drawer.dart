@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume/core/utils/functions.dart';
+import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/core/values/values.dart';
 import 'package:resume/core/widgets/social_button.dart';
 import 'package:resume/data/analytics_service.dart';
 import 'package:resume/data/constants.dart';
-import 'package:resume/data/locale_service.dart';
 import 'package:resume/domain/nav_data.dart';
 import 'package:resume/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/ui/scaffold_with_nav.dart';
@@ -84,12 +84,13 @@ class _AppDrawerState extends State<AppDrawer> {
     required TextTheme textTheme,
     required List<NavData> menuList,
   }) {
+    final tr = trWithContext(context);
     List<Widget> menuItems = [];
     for (var i = 0; i < menuList.length; i++) {
       menuItems.add(
         NavItem(
           onTap: () => widget.onTapNavItem(menuList[i]),
-          title: LocaleService().getText(widget.navItems[i].key),
+          title: tr.navLabel(widget.navItems[i].key),
           isMobile: true,
           isSelected: menuList[i].isSelected,
           titleColor: AppColors.white,
@@ -112,6 +113,7 @@ class _AppDrawerState extends State<AppDrawer> {
   }
 
   Widget _buildFooterText() {
+    final tr = trWithContext(context);
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? footerTextStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.primaryText2,
@@ -131,11 +133,11 @@ class _AppDrawerState extends State<AppDrawer> {
           children: [
             RichText(
               text: TextSpan(
-                text: LocaleService().getText("buildBy"),
+                text: tr.buildBy,
                 style: footerTextStyle,
                 children: [
                   TextSpan(
-                    text: LocaleService().getText("jessYen"),
+                    text: tr.jessYen,
                     style: footerTextStyle?.copyWith(
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w900,
@@ -151,14 +153,14 @@ class _AppDrawerState extends State<AppDrawer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(LocaleService().getText("madeIn"), style: footerTextStyle),
+            Text(tr.madeIn, style: footerTextStyle),
             SpaceW4(),
             ClipRRect(
               borderRadius: BorderRadius.all(const Radius.circular(20)),
               child: Text('🇹🇼'),
             ),
             SpaceW4(),
-            Text(LocaleService().getText("with"), style: footerTextStyle),
+            Text(tr.withText, style: footerTextStyle),
             SpaceW4(),
             Icon(
               FontAwesomeIcons.solidHeart,

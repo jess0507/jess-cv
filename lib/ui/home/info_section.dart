@@ -1,9 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/core/widgets/spaces.dart';
 import 'package:resume/data/constants.dart';
-import 'package:resume/data/locale_service.dart';
+import 'package:resume/l10n/app_localizations.dart';
 import 'package:resume/data/analytics_service.dart';
 
 import '../../core/utils/functions.dart';
@@ -16,6 +17,7 @@ class InfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final tr = trWithContext(context);
 
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
@@ -29,22 +31,22 @@ class InfoSection extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               height: isMobile ? 180 : 160,
-              child: buildHelloText(textTheme),
+              child: buildHelloText(textTheme, tr),
             ),
             SpaceH30(),
             SelectableText(
-              LocaleService().getText('aboutDev'),
+              tr.aboutDev,
               style: textTheme.bodyMedium?.copyWith(fontSize: 16, height: 2),
             ),
             SpaceH36(),
             SelectableText(
-              LocaleService().getText('emailLabel'),
+              tr.emailLabel,
               style: textTheme.headlineMedium?.copyWith(
                 fontSize: 16,
               ),
             ),
             SelectableText(
-              LocaleService().getText('email'),
+              tr.email,
               style: textTheme.bodyMedium?.copyWith(fontSize: 16),
             ),
             SpaceH36(),
@@ -69,7 +71,7 @@ class InfoSection extends StatelessWidget {
                   color: AppColors.primaryColor,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Text(LocaleService().getText('resume'),
+                    child: Text(tr.resume,
                         style: textTheme.headlineSmall?.copyWith(
                             color: AppColors.accentColor, fontSize: 16)),
                   ),
@@ -94,7 +96,7 @@ class InfoSection extends StatelessWidget {
                   color: AppColors.black200,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Text(LocaleService().getText('portfolio'),
+                    child: Text(tr.portfolio,
                         style: textTheme.headlineSmall?.copyWith(
                             color: AppColors.accentColor, fontSize: 16)),
                   ),
@@ -139,14 +141,14 @@ class InfoSection extends StatelessWidget {
     return items;
   }
 
-  Widget buildHelloText(TextTheme textTheme) {
+  Widget buildHelloText(TextTheme textTheme, AppLocalizations tr) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AnimatedTextKit(
           animatedTexts: [
-            TypewriterAnimatedText(LocaleService().getText('intro'),
+            TypewriterAnimatedText(tr.intro,
                 speed: Duration(milliseconds: 60),
                 textStyle: textTheme.headlineMedium),
           ],
@@ -157,7 +159,7 @@ class InfoSection extends StatelessWidget {
         AnimatedTextKit(
           animatedTexts: [
             TypewriterAnimatedText(
-              LocaleService().getText('position'),
+              tr.position,
               speed: Duration(milliseconds: 80),
               textStyle: textTheme.headlineMedium?.copyWith(
                 color: AppColors.primaryColor,

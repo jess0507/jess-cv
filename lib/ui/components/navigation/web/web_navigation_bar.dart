@@ -3,9 +3,9 @@ import 'package:resume/core/utils/functions.dart';
 import 'package:resume/core/values/values.dart';
 import 'package:resume/core/widgets/social_button.dart';
 import 'package:resume/core/widgets/spaces.dart';
+import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/data/analytics_service.dart';
 import 'package:resume/data/constants.dart';
-import 'package:resume/data/locale_service.dart';
 import 'package:resume/domain/nav_data.dart';
 import 'package:resume/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/ui/components/navigation/web/nimbus_vertical_divider.dart';
@@ -29,6 +29,7 @@ class _WebNavigationBarState extends State<WebNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final tr = trWithContext(context);
 
     List<Widget> buildSocialIcons(List<SocialButtonData> socialItems) {
       List<Widget> items = [];
@@ -60,7 +61,7 @@ class _WebNavigationBarState extends State<WebNavigationBar> {
       for (int index = 0; index < navItems.length; index++) {
         items.add(
           NavItem(
-            title: LocaleService().getText(navItems[index].key),
+            title: tr.navLabel(navItems[index].key),
             isSelected: navItems[index].isSelected,
             onTap: () => widget.onTapNavItem(navItems[index]),
           ),
@@ -84,7 +85,7 @@ class _WebNavigationBarState extends State<WebNavigationBar> {
             InkWell(
               onTap: () {},
               child: Text(
-                LocaleService().getText("logo"),
+                tr.logo,
                 style: textTheme.headlineMedium,
               ),
             ),

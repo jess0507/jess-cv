@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/core/widgets/nimbus_info_section.dart';
 import 'package:resume/core/widgets/spaces.dart';
-import 'package:resume/data/locale_service.dart';
 import 'package:resume/domain/nav_data.dart';
 import 'package:resume/ui/home/info_section.dart';
 import 'package:resume/ui/home/project/project_page.dart';
@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tr = trWithContext(context);
     return SingleChildScrollView(
       child: ResponsiveBuilder(
         refinedBreakpoints: RefinedBreakpoints(),
@@ -46,10 +47,10 @@ class HomePage extends StatelessWidget {
                 key: navItems.where((e) => e.key == 'projects').first.globalKey,
                 padding: EdgeInsets.only(left: padding, top: 16),
                 child: NimbusInfoSection(
-                  sectionTitle: LocaleService().getText("myWorks"),
-                  title1: LocaleService().getText("meetMyProjects"),
+                  sectionTitle: tr.myWorks,
+                  title1: tr.meetMyProjects,
                   hasTitle2: false,
-                  body: LocaleService().getText("projectsSubtitle"),
+                  body: tr.projectsSubtitle,
                 ),
               ),
               SizedBox(height: 40),
@@ -62,10 +63,10 @@ class HomePage extends StatelessWidget {
                 key: navItems.where((e) => e.key == 'skills').first.globalKey,
                 padding: EdgeInsets.only(left: padding),
                 child: NimbusInfoSection(
-                  sectionTitle: LocaleService().getText("mySkills"),
-                  title1: LocaleService().getText("whatMyDesignSkillsInclude"),
+                  sectionTitle: tr.mySkills,
+                  title1: tr.whatMyDesignSkillsInclude,
                   hasTitle2: false,
-                  body: LocaleService().getText("skillsSubtitle"),
+                  body: tr.skillsSubtitle,
                 ),
               ),
               SizedBox(height: 40),

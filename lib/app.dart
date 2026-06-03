@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:resume/l10n/app_localizations.dart';
 import 'package:resume/ui/app_theme.dart';
-import 'package:resume/data/locale_service.dart';
 import 'package:resume/data/analytics_service.dart';
 import 'package:resume/data/device_info_service.dart';
 
@@ -32,7 +32,9 @@ class ResumeApp extends HookConsumerWidget {
     }, []);
 
     return MaterialApp.router(
-      onGenerateTitle: (context) => LocaleService().getText('appTitle'),
+      onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: AppTheme.lightThemeData,
       routerConfig: goRouter,
     );
