@@ -7,6 +7,7 @@ import 'package:resume/core/widgets/social_button.dart';
 import 'package:resume/data/analytics_service.dart';
 import 'package:resume/data/constants.dart';
 import 'package:resume/domain/nav_data.dart';
+import 'package:resume/ui/components/locale_selector.dart';
 import 'package:resume/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/ui/scaffold_with_nav.dart';
 import 'package:resume/core/widgets/spaces.dart';
@@ -71,6 +72,10 @@ class _AppDrawerState extends State<AppDrawer> {
             ..._buildMenuList(
               textTheme: textTheme,
               menuList: widget.navItems,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: LocaleSelector(color: AppColors.white),
             ),
             Spacer(flex: 6),
             _buildFooterText(),

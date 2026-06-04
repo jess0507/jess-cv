@@ -7,6 +7,7 @@ import 'package:resume/core/utils/l10n_helper.dart';
 import 'package:resume/data/analytics_service.dart';
 import 'package:resume/data/constants.dart';
 import 'package:resume/domain/nav_data.dart';
+import 'package:resume/ui/components/locale_selector.dart';
 import 'package:resume/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/ui/components/navigation/web/nimbus_vertical_divider.dart';
 import 'package:resume/ui/scaffold_with_nav.dart';
@@ -100,6 +101,7 @@ class _WebNavigationBarState extends State<WebNavigationBar> {
                 SpaceW20(),
               ],
             ),
+            const LocaleSelector(),
             SizedBox(width: 40),
           ],
         ),
