@@ -47,8 +47,19 @@
 - npm install -g firebase-tools
 
 ## Deploy
-- fvm flutter build web --release --web-renderer html
+- fvm flutter build web --release
 - firebase deploy --only hosting
+
+## CI/CD (GitHub Actions)
+- Workflow: `.github/workflows/firebase-hosting-deploy.yml`
+- Auto-deploys to Firebase Hosting on every push to `master` (also runnable manually via `workflow_dispatch`).
+- Setup the service account secret once:
+  ```
+    firebase init hosting:github
+  ```
+  or generate a service account key in the Firebase/GCP console and add it as a
+  repo secret named `FIREBASE_SERVICE_ACCOUNT_JESS_YEN`
+  (Settings > Secrets and variables > Actions).
 
 ## Local Run
 - Run on web
