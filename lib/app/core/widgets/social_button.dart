@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume/app/core/values/values.dart';
 
-class SocialButtonData {
-  final String tag;
-  final String url;
-  final IconData iconData;
-  final Color? iconColor;
-  final Color? borderColor;
-
-  SocialButtonData({
-    required this.tag,
-    required this.iconData,
-    required this.url,
-    this.iconColor,
-    this.borderColor,
-  });
-}
-
 class SocialButton extends StatelessWidget {
   const SocialButton({
     super.key,

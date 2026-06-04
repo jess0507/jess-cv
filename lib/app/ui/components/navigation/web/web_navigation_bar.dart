@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:resume/app/core/utils/functions.dart';
 import 'package:resume/app/core/utils/l10n_helper.dart';
 import 'package:resume/app/core/values/values.dart';
 import 'package:resume/app/core/widgets/social_button.dart';
 import 'package:resume/app/core/widgets/spaces.dart';
 import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/constants.dart';
+import 'package:resume/app/data/model/social_item.dart';
 import 'package:resume/app/domain/nav_data.dart';
+import 'package:resume/app/providers/resume_provider.dart';
 import 'package:resume/app/ui/components/locale_selector.dart';
 import 'package:resume/app/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/app/ui/components/navigation/web/nimbus_vertical_divider.dart';
 import 'package:resume/app/ui/scaffold_with_nav.dart';
 
-class WebNavigationBar extends StatefulWidget {
+class WebNavigationBar extends ConsumerStatefulWidget {
   final List<NavData> navItems;
   final OnTapNavItem onTapNavItem;
 
@@ -23,16 +25,17 @@ class WebNavigationBar extends StatefulWidget {
   });
 
   @override
-  State<WebNavigationBar> createState() => _WebNavigationBarState();
+  ConsumerState<WebNavigationBar> createState() => _WebNavigationBarState();
 }
 
-class _WebNavigationBarState extends State<WebNavigationBar> {
+class _WebNavigationBarState extends ConsumerState<WebNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
+    final socialData = ref.watch(resumeDataProvider).socials;
 
-    List<Widget> buildSocialIcons(List<SocialButtonData> socialItems) {
+    List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
       List<Widget> items = [];
       for (int index = 0; index < socialItems.length; index++) {
         items.add(

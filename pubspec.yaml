@@ -48,6 +48,7 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
+    - assets/data/resume_data.json
     - assets/icon/ic_gmail.svg
     - assets/icon/ic_linkedin.svg
     - assets/icon/ic_github.svg

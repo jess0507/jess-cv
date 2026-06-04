@@ -1,23 +1,26 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/app/core/utils/l10n_helper.dart';
 import 'package:resume/app/core/widgets/spaces.dart';
 import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/constants.dart';
+import 'package:resume/app/providers/resume_provider.dart';
 import 'package:resume/l10n/app_localizations.dart';
 
 import '../../core/utils/functions.dart';
 import '../../core/values/values.dart';
 import '../../core/widgets/social_button.dart';
+import '../../data/model/social_item.dart';
 
-class InfoSection extends StatelessWidget {
+class InfoSection extends ConsumerWidget {
   const InfoSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
+    final data = ref.watch(resumeDataProvider);
 
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
@@ -60,10 +63,10 @@ class InfoSection extends StatelessWidget {
                       name: 'button_clicked',
                       parameters: {
                         'button_name': 'resume',
-                        'link': resumeGoogleGocsLink,
+                        'link': data.links.resumeGoogleDocs,
                       },
                     );
-                    await openUrlLink(resumeGoogleGocsLink);
+                    await openUrlLink(data.links.resumeGoogleDocs);
                   },
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -85,10 +88,10 @@ class InfoSection extends StatelessWidget {
                       name: 'button_clicked',
                       parameters: {
                         'button_name': 'portfolio',
-                        'link': portfolioGoogleGocsLink,
+                        'link': data.links.portfolioGoogleDocs,
                       },
                     );
-                    await openUrlLink(portfolioGoogleGocsLink);
+                    await openUrlLink(data.links.portfolioGoogleDocs);
                   },
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -105,7 +108,7 @@ class InfoSection extends StatelessWidget {
             ),
             SpaceH28(),
             Row(
-              children: [...buildSocialIcons(socialData)],
+              children: [...buildSocialIcons(data.socials)],
             )
           ],
         );
@@ -113,7 +116,7 @@ class InfoSection extends StatelessWidget {
     );
   }
 
-  List<Widget> buildSocialIcons(List<SocialButtonData> socialItems) {
+  List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
     List<Widget> items = [];
     for (int index = 0; index < socialItems.length; index++) {
       items.add(

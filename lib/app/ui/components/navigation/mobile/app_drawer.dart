@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:resume/app/core/utils/functions.dart';
 import 'package:resume/app/core/utils/l10n_helper.dart';
 import 'package:resume/app/core/values/values.dart';
 import 'package:resume/app/core/widgets/social_button.dart';
 import 'package:resume/app/core/widgets/spaces.dart';
 import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/constants.dart';
+import 'package:resume/app/data/model/social_item.dart';
+import 'package:resume/app/providers/resume_provider.dart';
 import 'package:resume/app/domain/nav_data.dart';
 import 'package:resume/app/ui/components/locale_selector.dart';
 import 'package:resume/app/ui/components/navigation/web/nav_item.dart';
 import 'package:resume/app/ui/scaffold_with_nav.dart';
 
-class AppDrawer extends StatefulWidget {
+class AppDrawer extends ConsumerStatefulWidget {
   final Color color;
   final double? width;
   final List<NavData> navItems;
@@ -29,10 +31,10 @@ class AppDrawer extends StatefulWidget {
   });
 
   @override
-  _AppDrawerState createState() => _AppDrawerState();
+  ConsumerState<AppDrawer> createState() => _AppDrawerState();
 }
 
-class _AppDrawerState extends State<AppDrawer> {
+class _AppDrawerState extends ConsumerState<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -119,6 +121,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   Widget _buildFooterText() {
     final tr = trWithContext(context);
+    final socialData = ref.watch(resumeDataProvider).socials;
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? footerTextStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.primaryText2,
@@ -178,7 +181,7 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
-  List<Widget> buildSocialIcons(List<SocialButtonData> socialItems) {
+  List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
     List<Widget> items = [];
     for (int index = 0; index < socialItems.length; index++) {
       items.add(

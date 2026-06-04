@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/data/constants.dart';
+import 'package:resume/app/providers/resume_provider.dart';
 
-class SkillSection extends StatelessWidget {
+class SkillSection extends ConsumerWidget {
   const SkillSection({super.key});
 
   static final path = 'skill';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final skills = ref.watch(resumeDataProvider).skills;
 
     List<Widget> buildSkillSection() {
-      return programSkillList.map(
+      return skills.map(
         (data) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,

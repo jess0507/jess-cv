@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:resume/app/core/utils/functions.dart';
 import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/constants.dart';
+import 'package:resume/app/providers/resume_provider.dart';
 import 'package:resume/app/ui/home/project/project_item.dart';
 
-class ProjectPage extends StatelessWidget {
+class ProjectPage extends ConsumerWidget {
   const ProjectPage({super.key});
   static const path = '/project';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final projects = ref.watch(resumeDataProvider).projects;
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
       builder: (context, sizingInformation) {
