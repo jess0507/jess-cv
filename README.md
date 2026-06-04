@@ -1,7 +1,9 @@
-# resume
+# Jess's web
+
 
 ## Flutter environment
-- There's flashing issue on 3.35.4, so change to 3.29.0.
+### Only web
+### Flutter sdk version is 3.29.0. There's flashing issue on 3.35.4.
 ```
   dart pub global activate fvm
   fvm install 3.29.0
