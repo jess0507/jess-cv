@@ -1,6 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:resume/app.dart';
 import 'package:resume/firebase_options.dart';
 
@@ -14,7 +14,7 @@ Future<void> main() async {
 
   runApp(
     const ProviderScope(
-      child: ResumeApp(),
+      child: JessApp(),
     ),
   );
 }
