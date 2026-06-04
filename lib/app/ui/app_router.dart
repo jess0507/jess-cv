@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:resume/app/ui/home/home_page.dart';
-import 'package:resume/app/ui/scaffold_with_nav.dart';
+import 'package:jessweb/app/ui/home/home_page.dart';
+import 'package:jessweb/app/ui/scaffold_with_nav.dart';
 
 final goRouter = GoRouter(
   initialLocation: HomePage.path,

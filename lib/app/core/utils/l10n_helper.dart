@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:resume/l10n/app_localizations.dart';
+import 'package:jessweb/l10n/app_localizations.dart';
 
 /// 取得目前 context 的 AppLocalizations(nullable-getter: false,保證非空)。
 /// 用法:tr.home

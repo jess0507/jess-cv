@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resume/app/core/utils/l10n_helper.dart';
-import 'package:resume/app/core/values/values.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/core/utils/l10n_helper.dart';
+import 'package:jessweb/app/core/values/values.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
 
 class MobileNavigationbutton extends StatelessWidget {
   final Function() onTapDrawer;

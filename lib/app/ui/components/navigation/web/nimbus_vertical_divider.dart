@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resume/app/core/values/values.dart';
+import 'package:jessweb/app/core/values/values.dart';
 
 class NimbusVerticalDivider extends StatelessWidget {
   const NimbusVerticalDivider({

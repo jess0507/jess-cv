@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/providers/resume_provider.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/providers/resume_provider.dart';
 
 class SkillSection extends ConsumerWidget {
   const SkillSection({super.key});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:resume/app/core/utils/l10n_helper.dart';
-import 'package:resume/app/core/widgets/nimbus_info_section.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/domain/nav_data.dart';
-import 'package:resume/app/ui/home/info_section.dart';
-import 'package:resume/app/ui/home/project/project_page.dart';
-import 'package:resume/app/ui/home/skill_section.dart';
+import 'package:jessweb/app/core/utils/l10n_helper.dart';
+import 'package:jessweb/app/core/widgets/nimbus_info_section.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/domain/nav_data.dart';
+import 'package:jessweb/app/ui/home/info_section.dart';
+import 'package:jessweb/app/ui/home/project/project_page.dart';
+import 'package:jessweb/app/ui/home/skill_section.dart';
 
 const webScreenRatioForPadding = 0.15;
 const mobileScreenRatioForPadding = 0.1;

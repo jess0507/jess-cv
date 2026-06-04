@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:resume/app/core/utils/functions.dart';
-import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/providers/resume_provider.dart';
-import 'package:resume/app/ui/home/project/project_item.dart';
+import 'package:jessweb/app/core/utils/functions.dart';
+import 'package:jessweb/app/data/analytics_service.dart';
+import 'package:jessweb/app/providers/resume_provider.dart';
+import 'package:jessweb/app/ui/home/project/project_item.dart';
 
 class ProjectPage extends ConsumerWidget {
   const ProjectPage({super.key});

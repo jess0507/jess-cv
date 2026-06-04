@@ -1,4 +1,4 @@
-import 'package:resume/app/data/model/data_info.dart';
+import 'package:jessweb/app/data/model/data_info.dart';
 
 class DataSection {
   final String title;

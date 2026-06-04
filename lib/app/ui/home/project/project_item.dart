@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resume/app/core/values/values.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/ui/components/navigation/web/animated_indicator.dart';
+import 'package:jessweb/app/core/values/values.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/ui/components/navigation/web/animated_indicator.dart';
 
 class ProjectData {
   final String projectCoverUrl;

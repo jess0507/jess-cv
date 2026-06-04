@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/version_service.dart';
-import 'package:resume/app/ui/components/navigation/mobile/app_drawer.dart';
-import 'package:resume/app/ui/components/navigation/mobile/mobile_navigation_button.dart';
-import 'package:resume/app/ui/components/navigation/web/web_navigation_bar.dart';
-import 'package:resume/app/ui/home/home_page.dart';
+import 'package:jessweb/app/data/analytics_service.dart';
+import 'package:jessweb/app/data/version_service.dart';
+import 'package:jessweb/app/ui/components/navigation/mobile/app_drawer.dart';
+import 'package:jessweb/app/ui/components/navigation/mobile/mobile_navigation_button.dart';
+import 'package:jessweb/app/ui/components/navigation/web/web_navigation_bar.dart';
+import 'package:jessweb/app/ui/home/home_page.dart';
 
 import '../domain/nav_data.dart';
 import 'home/project/project_page.dart';

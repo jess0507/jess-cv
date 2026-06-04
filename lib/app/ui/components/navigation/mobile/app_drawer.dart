@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:resume/app/core/utils/functions.dart';
-import 'package:resume/app/core/utils/l10n_helper.dart';
-import 'package:resume/app/core/values/values.dart';
-import 'package:resume/app/core/widgets/social_button.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/data/model/social_item.dart';
-import 'package:resume/app/providers/resume_provider.dart';
-import 'package:resume/app/domain/nav_data.dart';
-import 'package:resume/app/ui/components/locale_selector.dart';
-import 'package:resume/app/ui/components/navigation/web/nav_item.dart';
-import 'package:resume/app/ui/scaffold_with_nav.dart';
+import 'package:jessweb/app/core/utils/functions.dart';
+import 'package:jessweb/app/core/utils/l10n_helper.dart';
+import 'package:jessweb/app/core/values/values.dart';
+import 'package:jessweb/app/core/widgets/social_button.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/data/analytics_service.dart';
+import 'package:jessweb/app/data/model/social_item.dart';
+import 'package:jessweb/app/providers/resume_provider.dart';
+import 'package:jessweb/app/domain/nav_data.dart';
+import 'package:jessweb/app/ui/components/locale_selector.dart';
+import 'package:jessweb/app/ui/components/navigation/web/nav_item.dart';
+import 'package:jessweb/app/ui/scaffold_with_nav.dart';
 
 class AppDrawer extends ConsumerStatefulWidget {
   final Color color;

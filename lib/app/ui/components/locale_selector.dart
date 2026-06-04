@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:resume/app/core/values/values.dart';
-import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/providers/locale_provider.dart';
+import 'package:jessweb/app/core/values/values.dart';
+import 'package:jessweb/app/data/analytics_service.dart';
+import 'package:jessweb/app/providers/locale_provider.dart';
 
 /// 單一可選語系的資料(語言代碼、國旗 emoji、顯示名稱)。
 class _LocaleOption {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resume/app/core/values/values.dart';
-import 'package:resume/app/ui/components/navigation/web/selected_indicator.dart';
+import 'package:jessweb/app/core/values/values.dart';
+import 'package:jessweb/app/ui/components/navigation/web/selected_indicator.dart';
 
 import 'animated_indicator.dart';
 

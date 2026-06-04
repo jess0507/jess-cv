@@ -2,11 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:resume/app/core/utils/l10n_helper.dart';
-import 'package:resume/app/core/widgets/spaces.dart';
-import 'package:resume/app/data/analytics_service.dart';
-import 'package:resume/app/providers/resume_provider.dart';
-import 'package:resume/l10n/app_localizations.dart';
+import 'package:jessweb/app/core/utils/l10n_helper.dart';
+import 'package:jessweb/app/core/widgets/spaces.dart';
+import 'package:jessweb/app/data/analytics_service.dart';
+import 'package:jessweb/app/providers/resume_provider.dart';
+import 'package:jessweb/l10n/app_localizations.dart';
 
 import '../../core/utils/functions.dart';
 import '../../core/values/values.dart';
