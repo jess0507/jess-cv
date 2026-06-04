@@ -42,7 +42,6 @@ class AppTheme {
   // static const _semiBold = FontWeight.w600;
   // static const _medium = FontWeight.w500;
   static const _regular = FontWeight.w400;
-  static const _light = FontWeight.w300;
 
   static final TextTheme _textTheme = TextTheme(
     displayLarge: GoogleFonts.gloriaHallelujah(
