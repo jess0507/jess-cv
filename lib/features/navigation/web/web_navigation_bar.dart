@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:jessweb/core/services/analytics_service.dart';
-import 'package:jessweb/core/utils/functions.dart';
 import 'package:jessweb/core/utils/l10n_helper.dart';
 import 'package:jessweb/core/values/values.dart';
-import 'package:jessweb/core/widgets/social_button.dart';
+import 'package:jessweb/core/widgets/social_icons_row.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
-import 'package:jessweb/data/models/social_item.dart';
 import 'package:jessweb/data/providers/portfolio_provider.dart';
 import 'package:jessweb/features/navigation/locale_selector.dart';
 import 'package:jessweb/features/navigation/nav_data.dart';
@@ -35,31 +32,6 @@ class _WebNavigationBarState extends ConsumerState<WebNavigationBar> {
     final tr = trWithContext(context);
     final socialData =
         ref.watch(portfolioProvider).valueOrNull?.socials ?? const [];
-
-    List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
-      List<Widget> items = [];
-      for (int index = 0; index < socialItems.length; index++) {
-        items.add(
-          SocialButton(
-            tag: socialItems[index].tag,
-            iconData: socialItems[index].iconData,
-            onPressed: () {
-              AnalyticsService().logEvent(
-                name: 'social_link_click',
-                parameters: {
-                  'social_type': socialItems[index].tag,
-                  'url': socialItems[index].url,
-                  'source': 'web_navigation_bar',
-                },
-              );
-              openUrlLink(socialItems[index].url);
-            },
-          ),
-        );
-        items.add(SpaceW16());
-      }
-      return items;
-    }
 
     List<Widget> buildNavItems(List<NavData> navItems) {
       List<Widget> items = [];
@@ -99,12 +71,11 @@ class _WebNavigationBarState extends ConsumerState<WebNavigationBar> {
             SizedBox(width: 30),
             ...buildNavItems(widget.navItems),
             Spacer(),
-            Row(
-              children: [
-                ...buildSocialIcons(socialData),
-                SpaceW20(),
-              ],
+            SocialIconsRow(
+              socials: socialData,
+              source: 'web_navigation_bar',
             ),
+            SpaceW20(),
             const LocaleSelector(),
             SizedBox(width: 40),
           ],

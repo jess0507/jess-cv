@@ -6,6 +6,7 @@ import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/core/services/version_service.dart';
 import 'package:jessweb/features/navigation/mobile/app_drawer.dart';
 import 'package:jessweb/features/navigation/mobile/mobile_navigation_button.dart';
+import 'package:jessweb/features/navigation/version_badge.dart';
 import 'package:jessweb/features/navigation/web/web_navigation_bar.dart';
 import 'package:jessweb/features/home/home_page.dart';
 
@@ -121,25 +122,7 @@ class ScaffoldWithNav extends HookConsumerWidget {
                     )
                   ],
                 ),
-                if (version.isNotEmpty)
-                  Positioned(
-                    right: 16,
-                    bottom: 16,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      child: Text(
-                        version,
-                        style: const TextStyle(
-                          color: Colors.black87,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
+                if (version.isNotEmpty) VersionBadge(version: version),
               ],
             );
           }),

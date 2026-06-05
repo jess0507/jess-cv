@@ -41,7 +41,8 @@ class _NavItemState extends State<NavItem> with SingleTickerProviderStateMixin {
       child: InkWell(
         onTap: widget.onTap,
         child: Container(
-          alignment: Alignment.center,
+          alignment:
+              widget.isMobile ? Alignment.centerLeft : Alignment.center,
           width: widget.width,
           child: Stack(
             children: [
