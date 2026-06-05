@@ -2,15 +2,7 @@
 
 ## 可用的腳本
 
-### 1. 建立 Git Tag
-```bash
-./scripts/create_tag.sh [version]
-```
-**範例：** `./scripts/create_tag.sh 1.0.0`
-
-建立新的 git tag，版本號格式為 x.y.z
-
-### 2. 更新版本號
+### 1. 更新版本號
 ```bash
 ./scripts/update_version.sh
 ```
@@ -20,7 +12,7 @@
 - 使用 commit 數量作為 build number
 - 自動更新 `pubspec.yaml`
 
-### 3. 建置 Web
+### 23. 建置 Web
 ```bash
 ./scripts/build_web.sh
 ```
@@ -31,7 +23,7 @@
 - 建置生產環境的 web 版本
 - 輸出到 `build/web/`
 
-### 4. 部署到 Firebase
+### 3. 部署到 Firebase
 ```bash
 ./scripts/deploy_firebase.sh
 ```
@@ -41,7 +33,7 @@
 - 自動執行 `firebase deploy --only hosting`
 - 一鍵完成建置和部署流程
 
-### 5. 更新多語系（CSV → ARB）
+### 4. 更新多語系（CSV → ARB）
 翻譯維護在一份共享的 Google Sheet（第一列為 `key,en,zh`），更新後執行：
 
 ```bash
@@ -75,7 +67,7 @@ git add .
 git commit -m "feat: 新功能"
 
 # 2. 建立版本標籤
-git tag v1.1.0
+git tag 1.1.0
 
 # 3. 更新版本號到 pubspec.yaml
 ./scripts/update_version.sh
@@ -95,7 +87,7 @@ git add .
 git commit -m "feat: 新功能"
 
 # 2. 建立版本標籤
-git tag v1.1.0
+git tag 1.1.0
 
 # 3. 更新版本號到 pubspec.yaml
 ./scripts/update_version.sh
