@@ -112,11 +112,15 @@ class _ProjectItemState extends State<ProjectItem>
       child: Container(
         child: Stack(
           children: [
-            Image.network(
-              widget.imageUrl,
+            Container(
               width: widget.width,
               height: widget.height,
-              fit: BoxFit.fill,
+              color: AppColors.grey100,
+              child: Image.network(
+                widget.imageUrl,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              ),
             ),
             Positioned(
               bottom: 0,

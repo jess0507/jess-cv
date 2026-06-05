@@ -2,6 +2,8 @@
 
 
 ## Flutter environment
+### Google search console verification
+  - https://search.google.com
 ### Only web
 ### Flutter sdk version is 3.29.0. There's flashing issue on 3.35.4.
 ```
@@ -11,7 +13,7 @@
   fvm flutter doctor
 ```
 
-## Firebase config
+### Firebase config
 - curl -sL https://firebase.tools | bash
 - firebase login
 - dart pub global activate flutterfire_cli
