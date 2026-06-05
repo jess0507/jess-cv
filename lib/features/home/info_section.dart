@@ -151,6 +151,7 @@ class InfoSection extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AnimatedTextKit(
+          key: ValueKey(tr.intro),
           animatedTexts: [
             TypewriterAnimatedText(tr.intro,
                 speed: Duration(milliseconds: 60),
@@ -161,6 +162,7 @@ class InfoSection extends ConsumerWidget {
           totalRepeatCount: 5,
         ),
         AnimatedTextKit(
+          key: ValueKey(tr.position),
           animatedTexts: [
             TypewriterAnimatedText(
               tr.position,

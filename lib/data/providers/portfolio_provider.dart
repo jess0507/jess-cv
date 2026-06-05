@@ -5,7 +5,7 @@ import 'package:jessweb/data/repositories/portfolio_repository.dart';
 /// 持有 portfolio 顯示資料,初始化時自動從 Firestore 載入。
 ///
 /// 以 [AsyncNotifier] 暴露載入中 / 錯誤 / 完成狀態,
-/// 由 UI 層(BotToast)統一顯示 loading indicator 與錯誤訊息。
+/// 由 UI 層統一顯示錯誤訊息。
 class PortfolioNotifier extends AsyncNotifier<PortfolioData> {
   @override
   Future<PortfolioData> build() {

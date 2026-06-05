@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,18 +15,19 @@ class JessApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 追蹤目前的 loading indicator,以便狀態切換時關閉。
-    final loadingCancel = useRef<CancelFunc?>(null);
+    // MaterialApp 之上的 context 沒有 ScaffoldMessenger,
+    // 透過 key 取得 messenger state 來顯示 SnackBar。
+    final scaffoldMessengerKey =
+        useMemoized(() => GlobalKey<ScaffoldMessengerState>());
 
     void handlePortfolioState(AsyncValue<PortfolioData> value) {
-      // 切換到新狀態前,先關閉前一個 loading indicator。
-      loadingCancel.value?.call();
-      loadingCancel.value = null;
-
-      value.when(
-        loading: () => loadingCancel.value = BotToast.showLoading(),
-        error: (error, _) => BotToast.showText(text: '資料載入失敗,請稍後再試'),
-        data: (_) {},
+      value.whenOrNull(
+        error: (error, _) {
+          const message = '資料載入失敗,請稍後再試';
+          scaffoldMessengerKey.currentState
+            ?..hideCurrentSnackBar()
+            ..showSnackBar(const SnackBar(content: Text(message)));
+        },
       );
     }
 
@@ -60,13 +60,13 @@ class JessApp extends HookConsumerWidget {
     final locale = ref.watch(localeProvider);
 
     return MaterialApp.router(
+      scaffoldMessengerKey: scaffoldMessengerKey,
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: locale,
       theme: AppTheme.lightThemeData,
       routerConfig: goRouter,
-      builder: BotToastInit(),
     );
   }
 }
