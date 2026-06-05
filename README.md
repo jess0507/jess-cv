@@ -12,6 +12,12 @@
   fvm use 3.29.0
   fvm flutter doctor
 ```
+### Update flutter sdk
+- 目前避免使用3.29.0以上的版本，因為手機瀏覽器會白屏，無法渲染
+```
+fvm flutter upgrade
+fvm flutter pub get
+```
 
 ### Firebase config
 - curl -sL https://firebase.tools | bash
@@ -20,11 +26,6 @@
 - fvm flutter pub add firebase_core
 - fvm flutterfire configure --project=jess-yen
   (make sure the latest firebase version, and *get firebase_options.dart)
-
-## Run
-- (if need to update sdk) 
-  fvm flutter upgrade
-- fvm flutter pub get
 
 ## CORS
 - for images
@@ -75,6 +76,11 @@
     cd build/web
     python3 -m http.server 5000  
   ```
+  
+## Anailytics
+### Firebase Analytics
+- https://console.firebase.google.com/project/jess-yen/analytics/
+- 網站瀏覽總人數、平均停留時間、使用者地理位置等資訊
 
 ## Reference
 - [radyhaggag](https://github.com/radyhaggag/web_portfolio_with_flutter?ref=flutterawesome.com)

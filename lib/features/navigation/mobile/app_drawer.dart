@@ -121,7 +121,8 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
 
   Widget _buildFooterText() {
     final tr = trWithContext(context);
-    final socialData = ref.watch(portfolioProvider).socials;
+    final socialData =
+        ref.watch(portfolioProvider).valueOrNull?.socials ?? const [];
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? footerTextStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.primaryText2,

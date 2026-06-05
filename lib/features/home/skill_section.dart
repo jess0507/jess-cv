@@ -11,7 +11,7 @@ class SkillSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    final skills = ref.watch(portfolioProvider).skills;
+    final skills = ref.watch(portfolioProvider).valueOrNull?.skills ?? const [];
 
     List<Widget> buildSkillSection() {
       return skills.map(

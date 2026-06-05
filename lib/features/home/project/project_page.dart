@@ -12,7 +12,8 @@ class ProjectPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final projects = ref.watch(portfolioProvider).projects;
+    final projects =
+        ref.watch(portfolioProvider).valueOrNull?.projects ?? const [];
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
       builder: (context, sizingInformation) {

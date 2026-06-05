@@ -33,7 +33,8 @@ class _WebNavigationBarState extends ConsumerState<WebNavigationBar> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
-    final socialData = ref.watch(portfolioProvider).socials;
+    final socialData =
+        ref.watch(portfolioProvider).valueOrNull?.socials ?? const [];
 
     List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
       List<Widget> items = [];

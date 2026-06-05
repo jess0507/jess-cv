@@ -7,6 +7,7 @@ import 'package:jessweb/core/utils/l10n_helper.dart';
 import 'package:jessweb/core/values/values.dart';
 import 'package:jessweb/core/widgets/social_button.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
+import 'package:jessweb/data/models/portfolio_data.dart';
 import 'package:jessweb/data/models/social_item.dart';
 import 'package:jessweb/data/providers/portfolio_provider.dart';
 import 'package:jessweb/l10n/app_localizations.dart';
@@ -19,7 +20,8 @@ class InfoSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
-    final data = ref.watch(portfolioProvider);
+    final data =
+        ref.watch(portfolioProvider).valueOrNull ?? PortfolioData.empty();
 
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
