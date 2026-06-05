@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/core/utils/functions.dart';
 import 'package:jessweb/core/utils/l10n_helper.dart';
 import 'package:jessweb/core/values/values.dart';
 import 'package:jessweb/core/widgets/social_button.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
-import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/data/models/social_item.dart';
-import 'package:jessweb/features/navigation/nav_data.dart';
-import 'package:jessweb/data/providers/resume_provider.dart';
+import 'package:jessweb/data/providers/portfolio_provider.dart';
 import 'package:jessweb/features/navigation/locale_selector.dart';
+import 'package:jessweb/features/navigation/nav_data.dart';
+import 'package:jessweb/features/navigation/scaffold_with_nav.dart';
 import 'package:jessweb/features/navigation/web/nav_item.dart';
 import 'package:jessweb/features/navigation/web/nimbus_vertical_divider.dart';
-import 'package:jessweb/features/navigation/scaffold_with_nav.dart';
 
 class WebNavigationBar extends ConsumerStatefulWidget {
   final List<NavData> navItems;
@@ -33,7 +33,7 @@ class _WebNavigationBarState extends ConsumerState<WebNavigationBar> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
-    final socialData = ref.watch(resumeDataProvider).socials;
+    final socialData = ref.watch(portfolioProvider).socials;
 
     List<Widget> buildSocialIcons(List<SocialItem> socialItems) {
       List<Widget> items = [];

@@ -1,17 +1,16 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:jessweb/core/utils/l10n_helper.dart';
-import 'package:jessweb/core/widgets/spaces.dart';
 import 'package:jessweb/core/services/analytics_service.dart';
-import 'package:jessweb/data/providers/resume_provider.dart';
-import 'package:jessweb/l10n/app_localizations.dart';
-
 import 'package:jessweb/core/utils/functions.dart';
+import 'package:jessweb/core/utils/l10n_helper.dart';
 import 'package:jessweb/core/values/values.dart';
 import 'package:jessweb/core/widgets/social_button.dart';
+import 'package:jessweb/core/widgets/spaces.dart';
 import 'package:jessweb/data/models/social_item.dart';
+import 'package:jessweb/data/providers/portfolio_provider.dart';
+import 'package:jessweb/l10n/app_localizations.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class InfoSection extends ConsumerWidget {
   const InfoSection({super.key});
@@ -20,7 +19,7 @@ class InfoSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final tr = trWithContext(context);
-    final data = ref.watch(resumeDataProvider);
+    final data = ref.watch(portfolioProvider);
 
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),

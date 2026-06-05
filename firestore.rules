@@ -1,0 +1,16 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 公開作品集資料:僅開放讀取 config/portfolio,禁止任何寫入。
+    match /config/portfolio {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // 其餘所有文件預設拒絕讀寫。
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

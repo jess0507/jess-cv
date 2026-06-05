@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:jessweb/core/utils/functions.dart';
 import 'package:jessweb/core/services/analytics_service.dart';
-import 'package:jessweb/data/providers/resume_provider.dart';
+import 'package:jessweb/core/utils/functions.dart';
+import 'package:jessweb/data/providers/portfolio_provider.dart';
 import 'package:jessweb/features/home/project/project_item.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class ProjectPage extends ConsumerWidget {
   const ProjectPage({super.key});
@@ -12,7 +12,7 @@ class ProjectPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final projects = ref.watch(resumeDataProvider).projects;
+    final projects = ref.watch(portfolioProvider).projects;
     return ResponsiveBuilder(
       refinedBreakpoints: RefinedBreakpoints(),
       builder: (context, sizingInformation) {

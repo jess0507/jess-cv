@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
-import 'package:jessweb/data/providers/resume_provider.dart';
+import 'package:jessweb/data/providers/portfolio_provider.dart';
 
 class SkillSection extends ConsumerWidget {
   const SkillSection({super.key});
@@ -11,7 +11,7 @@ class SkillSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    final skills = ref.watch(resumeDataProvider).skills;
+    final skills = ref.watch(portfolioProvider).skills;
 
     List<Widget> buildSkillSection() {
       return skills.map(

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/core/utils/functions.dart';
 import 'package:jessweb/core/utils/l10n_helper.dart';
 import 'package:jessweb/core/values/values.dart';
 import 'package:jessweb/core/widgets/social_button.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
-import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/data/models/social_item.dart';
-import 'package:jessweb/data/providers/resume_provider.dart';
-import 'package:jessweb/features/navigation/nav_data.dart';
+import 'package:jessweb/data/providers/portfolio_provider.dart';
 import 'package:jessweb/features/navigation/locale_selector.dart';
-import 'package:jessweb/features/navigation/web/nav_item.dart';
+import 'package:jessweb/features/navigation/nav_data.dart';
 import 'package:jessweb/features/navigation/scaffold_with_nav.dart';
+import 'package:jessweb/features/navigation/web/nav_item.dart';
 
 class AppDrawer extends ConsumerStatefulWidget {
   final Color color;
@@ -121,7 +121,7 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
 
   Widget _buildFooterText() {
     final tr = trWithContext(context);
-    final socialData = ref.watch(resumeDataProvider).socials;
+    final socialData = ref.watch(portfolioProvider).socials;
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? footerTextStyle = textTheme.bodyMedium?.copyWith(
       color: AppColors.primaryText2,

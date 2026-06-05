@@ -3,21 +3,21 @@ import 'project.dart';
 import 'social_item.dart';
 
 /// 對應 `assets/data/resume_data.json` 的頂層 model。
-class ResumeData {
+class PortfolioData {
   final ResumeLinks links;
   final List<SocialItem> socials;
   final List<SkillData> skills;
   final List<Project> projects;
 
-  ResumeData({
+  PortfolioData({
     required this.links,
     required this.socials,
     required this.skills,
     required this.projects,
   });
 
-  factory ResumeData.fromJson(Map<String, dynamic> json) {
-    return ResumeData(
+  factory PortfolioData.fromJson(Map<String, dynamic> json) {
+    return PortfolioData(
       links: ResumeLinks.fromJson(json['links'] as Map<String, dynamic>),
       socials: (json['socials'] as List<dynamic>)
           .map((e) => SocialItem.fromJson(e as Map<String, dynamic>))
