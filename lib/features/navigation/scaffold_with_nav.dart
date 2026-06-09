@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:jessweb/core/services/analytics_service.dart';
 import 'package:jessweb/core/services/version_service.dart';
-import 'package:jessweb/features/navigation/mobile/app_drawer.dart';
-import 'package:jessweb/features/navigation/mobile/mobile_navigation_button.dart';
-import 'package:jessweb/features/navigation/version_badge.dart';
-import 'package:jessweb/features/navigation/web/web_navigation_bar.dart';
 import 'package:jessweb/features/home/home_page.dart';
-
-import 'package:jessweb/features/navigation/nav_data.dart';
 import 'package:jessweb/features/home/project/project_page.dart';
 import 'package:jessweb/features/home/skill_section.dart';
+import 'package:jessweb/features/navigation/mobile/app_drawer.dart';
+import 'package:jessweb/features/navigation/mobile/mobile_navigation_button.dart';
+import 'package:jessweb/features/navigation/nav_data.dart';
+import 'package:jessweb/features/navigation/web/web_navigation_bar.dart';
+import 'package:jessweb/features/version/version_badge.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 typedef OnTapNavItem = void Function(NavData);
 

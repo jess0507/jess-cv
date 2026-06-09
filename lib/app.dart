@@ -7,7 +7,7 @@ import 'package:jessweb/core/services/device_info_service.dart';
 import 'package:jessweb/core/theme/app_theme.dart';
 import 'package:jessweb/data/models/portfolio_data.dart';
 import 'package:jessweb/data/providers/portfolio_provider.dart';
-import 'package:jessweb/features/navigation/locale_provider.dart';
+import 'package:jessweb/features/locale/locale_provider.dart';
 import 'package:jessweb/l10n/app_localizations.dart';
 
 class JessApp extends HookConsumerWidget {

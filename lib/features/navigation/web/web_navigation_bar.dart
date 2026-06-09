@@ -5,7 +5,7 @@ import 'package:jessweb/core/values/values.dart';
 import 'package:jessweb/core/widgets/social_icons_row.dart';
 import 'package:jessweb/core/widgets/spaces.dart';
 import 'package:jessweb/data/providers/portfolio_provider.dart';
-import 'package:jessweb/features/navigation/locale_selector.dart';
+import 'package:jessweb/features/locale/locale_selector.dart';
 import 'package:jessweb/features/navigation/nav_data.dart';
 import 'package:jessweb/features/navigation/scaffold_with_nav.dart';
 import 'package:jessweb/features/navigation/web/nav_item.dart';

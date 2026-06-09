@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:jessweb/core/values/values.dart';
-import 'package:jessweb/features/navigation/locale_selector.dart';
+import 'package:jessweb/features/locale/locale_selector.dart';
 import 'package:jessweb/features/navigation/mobile/drawer_footer.dart';
 import 'package:jessweb/features/navigation/mobile/drawer_nav_item.dart';
 import 'package:jessweb/features/navigation/nav_data.dart';
